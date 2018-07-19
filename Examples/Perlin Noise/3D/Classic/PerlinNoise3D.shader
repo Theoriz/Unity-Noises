@@ -1,11 +1,11 @@
-Shader "Unity-Noises/SimplexNoise3D"
+Shader "Unity-Noises/PerlinNoise3D"
 {
 	Properties
 	{
 		_Scale("Scale", Range(0,10)) = 1
 		_Offset("Offset", Range(-1, 1)) = 0.5
 		_Speed("Speed", Range(-5,5)) = 1
-		_Fractal("FractalNumber", Range(1,6)) = 1
+		_Fractal("FractalNumber", Range(1,6)) = 6
 		_FractalScale("FractalScaleIncrease", Range(0,10)) = 2
 		_Attenuation("FractalAttenuation", Range(0,1)) = 0.5
 	}
@@ -13,7 +13,7 @@ Shader "Unity-Noises/SimplexNoise3D"
 	CGINCLUDE
 
 	#include "UnityCustomRenderTexture.cginc"
-	#include "SimplexNoise3D.hlsl"
+	#include "Assets/Unity-Noises/Includes/PerlinNoise3D.hlsl"
 
 	float _Fractal;
 	float _FractalScale;
@@ -39,7 +39,7 @@ Shader "Unity-Noises/SimplexNoise3D"
         {
             float3 coord = float3(uv * scale, _Time.y * _Speed);
 
-			output += snoise_grad(coord) * weight;
+			output += cnoise(coord) * weight;
 
             scale *= _FractalScale;
             weight *= harmonicWeight;
