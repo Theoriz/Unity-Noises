@@ -53,7 +53,7 @@ float3 fade(float3 t) {
 }
 
 // Classic Perlin noise
-float cnoise(float3 P)
+float PerlinNoise(float3 P)
 {
   float3 Pi0 = floor(P); // Integer part for indexing
   float3 Pi1 = Pi0 + (float3)1.0; // Integer part + 1
@@ -123,8 +123,27 @@ float cnoise(float3 P)
   return 2.2 * n_xyz;
 }
 
+//Classic Perlin noise with octaves
+float PerlinNoise_Octaves(float3 inCoord, float scale, float3 speed, uint octaveNumber, float octaveScale, float octaveAttenuation) {
+
+	float output = 0.0f;
+	float weight = 1.0f;
+
+	for (uint i = 0; i < octaveNumber; i++)
+	{
+		float3 coord = inCoord * scale + _Time.y * speed;
+
+		output += PerlinNoise(coord) * weight;
+
+		scale *= octaveScale;
+		weight *= 1.0f - octaveAttenuation;
+	}
+
+	return output;
+}
+
 // Classic Perlin noise, periodic variant
-float pnoise(float3 P, float3 rep)
+float PeriodicPerlinNoise(float3 P, float3 rep)
 {
   float3 Pi0 = mod(floor(P), rep); // Integer part, modulo period
   float3 Pi1 = mod(Pi0 + (float3)1.0, rep); // Integer part + 1, mod period
@@ -191,4 +210,25 @@ float pnoise(float3 P, float3 rep)
   float2 n_yz = lerp(n_z.xy, n_z.zw, fade_xyz.y);
   float n_xyz = lerp(n_yz.x, n_yz.y, fade_xyz.x);
   return 2.2 * n_xyz;
+}
+
+//Periodic Perlin Noise with octaves
+//Classic Perlin noise with octaves
+float PeriodicPerlinNoise_Octaves(float3 inCoord, float scale, float3 speed, uint octaveNumber, float octaveScale, float octaveAttenuation, float3 period) {
+
+	float output = 0.0f;
+	float weight = 1.0f;
+
+	for (uint i = 0; i < octaveNumber; i++)
+	{
+		float3 coord = inCoord * scale + _Time.y * speed;
+
+		output += PeriodicPerlinNoise(coord, period) * weight;
+
+		scale *= octaveScale;
+		weight *= 1.0f - octaveAttenuation;
+		period *= octaveScale;
+	}
+
+	return output;
 }

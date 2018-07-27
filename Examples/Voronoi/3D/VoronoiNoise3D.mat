@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SimplexNoise3D
-  m_Shader: {fileID: 4800000, guid: 6b85df906d2668844939e0a234df89eb, type: 3}
+  m_Name: VoronoiNoise3D
+  m_Shader: {fileID: 4800000, guid: 08c8be1a407ee17489046d63fa4703a7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -60,23 +60,21 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Fractal: 6
-    - _FractalScale: 2.2
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Jitter: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Octave: 6
+    - _Octave: 1
     - _OctaveScale: 2
-    - _Offset: 0.5
+    - _Offset: 0
     - _Parallax: 0.02
-    - _Scale: 3.19
-    - _SimplexDerivative: 0
+    - _Scale: 8.56
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.9
+    - _Speed: 0.32
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1

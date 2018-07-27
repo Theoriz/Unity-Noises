@@ -1,23 +1,23 @@
-Shader "Unity-Noises/PeriodicPerlinNoise3D"
+Shader "Unity-Noises/PeriodicPerlinNoise3D/Update"
 {
 	Properties
 	{
-		_Scale("Scale", Range(0,10)) = 1
-		_Offset("Offset", Range(-1, 1)) = 0.5
-		_Speed("Speed", Range(-5,5)) = 1
-		_Fractal("FractalNumber", Range(1,6)) = 6
-		_FractalScale("FractalScaleIncrease", Range(0,10)) = 2
-		_Attenuation("FractalAttenuation", Range(0,1)) = 0.5
-		_Period("Period", Range(0,10)) = 1
+		_Scale("Scale", Range(0,10)) = 5
+		_Offset("Offset", Range(-3, 3)) = 0.5
+		_Speed("Speed", Range(-5,5)) = 0.5
+		_Octave("OctaveNumber", Range(1,6)) = 6
+		_OctaveScale("OctaveScaleIncrease", Range(0,10)) = 2
+		_Attenuation("OctaveAttenuation", Range(0,1)) = 0.5
+		_Period("Period", Range(0,10)) = 2
 	}
 
 	CGINCLUDE
 
 	#include "UnityCustomRenderTexture.cginc"
-	#include "Assets/Unity-Noises/Includes/PerlinNoise3D.hlsl"
+	#include "../../../../Includes/PerlinNoise3D.hlsl"
 
-	float _Fractal;
-	float _FractalScale;
+	float _Octave;
+	float _OctaveScale;
 	float _Scale;
 	float _Offset;
 	float _Attenuation;
@@ -26,30 +26,14 @@ Shader "Unity-Noises/PeriodicPerlinNoise3D"
 
     half4 frag(v2f_customrendertexture i) : SV_Target
     {
-        const float epsilon = 0.0001;
+		float2 uv = i.globalTexcoord;
 
-        float2 uv = i.globalTexcoord;
+		float4 output = _Offset;
+		float3 period = _Period;
 
-        float3 output = _Offset;
-        float scale = _Scale;
-        float weight = 1.0f;
-		float harmonicWeight = 1.0f - _Attenuation;
-		float3 period = float3(_Period, _Period, _Period);
+		output += PeriodicPerlinNoise_Octaves(float3(uv, 0), _Scale, float3(0.0f, 0.0f, _Speed), uint(_Octave), _OctaveScale, _Attenuation, period);
 
-		uint fractalNumber = uint(_Fractal);
-
-        for (uint i = 0; i < fractalNumber; i++)
-        {
-            float3 coord = float3(uv * scale, _Time.y * _Speed);
-
-			output += pnoise(coord, period) * weight;
-
-            scale *= _FractalScale;
-            weight *= harmonicWeight;
-			period *= _FractalScale;
-        }
-
-        return float4(output.xyz, 1);
+		return output;
 
     }
 

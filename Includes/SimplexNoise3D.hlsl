@@ -40,7 +40,8 @@ float4 taylorInvSqrt(float4 r)
     return 1.79284291400159 - r * 0.85373472095314;
 }
 
-float snoise(float3 v)
+//Simplex noise
+float SimplexNoise(float3 v)
 {
     const float2 C = float2(1.0 / 6.0, 1.0 / 3.0);
 
@@ -113,7 +114,27 @@ float snoise(float3 v)
     return 42.0 * dot(m, px);
 }
 
-float4 snoise_grad(float3 v)
+//Simplex noise with octaves
+float SimplexNoise_Octaves(float3 inCoord, float scale, float3 speed, uint octaveNumber, float octaveScale, float octaveAttenuation) {
+
+	float output = 0.0f;
+	float weight = 1.0f;
+
+	for (uint i = 0; i < octaveNumber; i++)
+	{
+		float3 coord = inCoord * scale + _Time.y * speed;
+
+		output += SimplexNoise(coord) * weight;
+
+		scale *= octaveScale;
+		weight *= 1.0f - octaveAttenuation;
+	}
+
+	return output;
+}
+
+//Simplex noise gradient
+float4 SimplexNoiseGradient(float3 v)
 {
     const float2 C = float2(1.0 / 6.0, 1.0 / 3.0);
 
@@ -189,4 +210,23 @@ float4 snoise_grad(float3 v)
         -6.0 * m3.w * x3 * dot(x3, g3) + m4.w * g3;
     float4 px = float4(dot(x0, g0), dot(x1, g1), dot(x2, g2), dot(x3, g3));
     return 42.0 * float4(grad, dot(m4, px));
+}
+
+//Simplex noise gradient with octaves
+float4 SimplexNoiseGradient_Octaves(float3 inCoord, float scale, float3 speed, uint octaveNumber, float octaveScale, float octaveAttenuation) {
+
+	float4 output = 0.0f;
+	float weight = 1.0f;
+
+	for (uint i = 0; i < octaveNumber; i++)
+	{
+		float3 coord = inCoord * scale + _Time.y * speed;
+
+		output += SimplexNoiseGradient(coord) * weight;
+
+		scale *= octaveScale;
+		weight *= 1.0f - octaveAttenuation;
+	}
+
+	return output;
 }

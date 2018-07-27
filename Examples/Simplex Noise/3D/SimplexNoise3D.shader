@@ -1,22 +1,22 @@
-Shader "Unity-Noises/SimplexNoise3D"
+Shader "Unity-Noises/SimplexNoise3D/Update"
 {
 	Properties
 	{
-		_Scale("Scale", Range(0,10)) = 1
-		_Offset("Offset", Range(-1, 1)) = 0.5
-		_Speed("Speed", Range(-5,5)) = 1
-		_Fractal("FractalNumber", Range(1,6)) = 6
-		_FractalScale("FractalScaleIncrease", Range(0,10)) = 2
-		_Attenuation("FractalAttenuation", Range(0,1)) = 0.5
+		_Scale("Scale", Range(0,10)) = 5
+		_Offset("Offset", Range(-3, 3)) = 0
+		_Speed("Speed", Range(-5,5)) = 0.3
+		_Octave("OctaveNumber", Range(1,6)) = 6
+		_OctaveScale("OctaveScaleIncrease", Range(0,10)) = 2
+		_Attenuation("OctaveAttenuation", Range(0,1)) = 0.5
 	}
 
 	CGINCLUDE
 
 	#include "UnityCustomRenderTexture.cginc"
-	#include "Assets/Unity-Noises/Includes/SimplexNoise3D.hlsl"
+	#include "../../../Includes/SimplexNoise3D.hlsl"
 
-	float _Fractal;
-	float _FractalScale;
+	float _Octave;
+	float _OctaveScale;
 	float _Scale;
 	float _Offset;
 	float _Attenuation;
@@ -24,28 +24,30 @@ Shader "Unity-Noises/SimplexNoise3D"
 
     half4 frag(v2f_customrendertexture i) : SV_Target
     {
-        const float epsilon = 0.0001;
-
         float2 uv = i.globalTexcoord;
 
-        float3 output = _Offset;
+		float4 output = _Offset;
+		/*
         float scale = _Scale;
         float weight = 1.0f;
 		float harmonicWeight = 1.0f - _Attenuation;
 
-		uint fractalNumber = uint(_Fractal);
+		uint OctaveNumber = uint(_Octave);
 
-        for (uint i = 0; i < fractalNumber; i++)
+        for (uint i = 0; i < OctaveNumber; i++)
         {
             float3 coord = float3(uv * scale, _Time.y * _Speed);
 
-			output += snoise_grad(coord) * weight;
+			output += snoise(coord) * weight;
 
-            scale *= _FractalScale;
+            scale *= _OctaveScale;
             weight *= harmonicWeight;
         }
+		*/
 
-        return float4(output.xyz, 1);
+		output += SimplexNoise_Octaves(float3(uv, 0), _Scale, float3(0.0f, 0.0f, _Speed), uint(_Octave), _OctaveScale, _Attenuation);
+
+		return output;
 
     }
 
