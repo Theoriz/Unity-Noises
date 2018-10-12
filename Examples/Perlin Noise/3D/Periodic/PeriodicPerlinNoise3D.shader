@@ -9,6 +9,7 @@ Shader "Unity-Noises/PeriodicPerlinNoise3D/Update"
 		_OctaveScale("OctaveScaleIncrease", Range(0,10)) = 2
 		_Attenuation("OctaveAttenuation", Range(0,1)) = 0.5
 		_Period("Period", Range(0,10)) = 2
+		_IsTimeControlled("Is time controlled ? (1=yes)", Range(0,1)) = 0
 	}
 
 	CGINCLUDE
@@ -23,6 +24,8 @@ Shader "Unity-Noises/PeriodicPerlinNoise3D/Update"
 	float _Attenuation;
 	float _Speed;
 	float _Period;
+	float _IsTimeControlled;
+	float _ControlledTime;
 
     half4 frag(v2f_customrendertexture i) : SV_Target
     {
@@ -31,7 +34,9 @@ Shader "Unity-Noises/PeriodicPerlinNoise3D/Update"
 		float4 output = _Offset;
 		float3 period = _Period;
 
-		output += PeriodicPerlinNoise_Octaves(float3(uv, 0), _Scale, float3(0.0f, 0.0f, _Speed), uint(_Octave), _OctaveScale, _Attenuation, period);
+		float time = _IsTimeControlled == 1.0f ? _ControlledTime : _Time.y;
+
+		output += PeriodicPerlinNoise_Octaves(float3(uv, 0), _Scale, float3(0.0f, 0.0f, _Speed), uint(_Octave), _OctaveScale, _Attenuation, period, time);
 
 		return output;
 

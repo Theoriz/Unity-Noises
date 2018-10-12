@@ -115,14 +115,14 @@ float SimplexNoise(float3 v)
 }
 
 //Simplex noise with octaves
-float SimplexNoise_Octaves(float3 inCoord, float scale, float3 speed, uint octaveNumber, float octaveScale, float octaveAttenuation) {
+float SimplexNoise_Octaves(float3 inCoord, float scale, float3 speed, uint octaveNumber, float octaveScale, float octaveAttenuation, float time) {
 
 	float output = 0.0f;
 	float weight = 1.0f;
 
 	for (uint i = 0; i < octaveNumber; i++)
 	{
-		float3 coord = inCoord * scale + _Time.y * speed;
+		float3 coord = inCoord * scale + time * speed;
 
 		output += SimplexNoise(coord) * weight;
 
@@ -213,14 +213,14 @@ float4 SimplexNoiseGradient(float3 v)
 }
 
 //Simplex noise gradient with octaves
-float4 SimplexNoiseGradient_Octaves(float3 inCoord, float scale, float3 speed, uint octaveNumber, float octaveScale, float octaveAttenuation) {
+float4 SimplexNoiseGradient_Octaves(float3 inCoord, float scale, float3 speed, uint octaveNumber, float octaveScale, float octaveAttenuation, float time) {
 
 	float4 output = 0.0f;
 	float weight = 1.0f;
 
 	for (uint i = 0; i < octaveNumber; i++)
 	{
-		float3 coord = inCoord * scale + _Time.y * speed;
+		float3 coord = inCoord * scale + time * speed;
 
 		output += SimplexNoiseGradient(coord) * weight;
 

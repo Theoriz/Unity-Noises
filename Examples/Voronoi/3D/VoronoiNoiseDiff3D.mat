@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: VoronoiNoiseDiff3D
-  m_Shader: {fileID: 4800000, guid: 77ca122258cc8c846888f66a8b1c4ab3, type: 3}
+  m_Shader: {fileID: 4800000, guid: 761ea6a9c3717e94b8e5e54b53671efe, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

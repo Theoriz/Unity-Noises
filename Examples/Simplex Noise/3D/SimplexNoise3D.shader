@@ -8,6 +8,7 @@ Shader "Unity-Noises/SimplexNoise3D/Update"
 		_Octave("OctaveNumber", Range(1,6)) = 6
 		_OctaveScale("OctaveScaleIncrease", Range(0,10)) = 2
 		_Attenuation("OctaveAttenuation", Range(0,1)) = 0.5
+		_IsTimeControlled("Is time controlled ? (1=yes)", Range(0,1)) = 0
 	}
 
 	CGINCLUDE
@@ -21,31 +22,18 @@ Shader "Unity-Noises/SimplexNoise3D/Update"
 	float _Offset;
 	float _Attenuation;
 	float _Speed;
+	float _IsTimeControlled;
+	float _ControlledTime;
 
     half4 frag(v2f_customrendertexture i) : SV_Target
     {
         float2 uv = i.globalTexcoord;
 
 		float4 output = _Offset;
-		/*
-        float scale = _Scale;
-        float weight = 1.0f;
-		float harmonicWeight = 1.0f - _Attenuation;
 
-		uint OctaveNumber = uint(_Octave);
+		float time = _IsTimeControlled == 1.0f ? _ControlledTime : _Time.y;
 
-        for (uint i = 0; i < OctaveNumber; i++)
-        {
-            float3 coord = float3(uv * scale, _Time.y * _Speed);
-
-			output += snoise(coord) * weight;
-
-            scale *= _OctaveScale;
-            weight *= harmonicWeight;
-        }
-		*/
-
-		output += SimplexNoise_Octaves(float3(uv, 0), _Scale, float3(0.0f, 0.0f, _Speed), uint(_Octave), _OctaveScale, _Attenuation);
+		output += SimplexNoise_Octaves(float3(uv, 0), _Scale, float3(0.0f, 0.0f, _Speed), uint(_Octave), _OctaveScale, _Attenuation, time);
 
 		return output;
 

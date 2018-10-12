@@ -65,14 +65,14 @@ float2 inoise(float3 P, float jitter)
 }
 
 // fractal sum, range -1.0 - 1.0
-float VoronoiNoise_Octaves(float3 p, float scale, float3 speed, int octaveNumber, float octaveScale, float octaveAttenuation, float jitter)
+float VoronoiNoise_Octaves(float3 p, float scale, float3 speed, int octaveNumber, float octaveScale, float octaveAttenuation, float jitter, float time)
 {
 	float freq = scale;
 	float weight = 1.0f;
 	float sum = 0;	
 	for(int i = 0; i < octaveNumber; i++)
 	{
-		float2 F = inoise(p * freq + _Time.y * speed, jitter) * weight;
+		float2 F = inoise(p * freq + time * speed, jitter) * weight;
 		
 		sum += sqrt(F[0]);
 		
@@ -82,14 +82,14 @@ float VoronoiNoise_Octaves(float3 p, float scale, float3 speed, int octaveNumber
 	return sum;
 }
 
-float VoronoiNoiseDiff_Octaves(float3 p, float scale, float3 speed, int octaveNumber, float octaveScale, float octaveAttenuation, float jitter)
+float VoronoiNoiseDiff_Octaves(float3 p, float scale, float3 speed, int octaveNumber, float octaveScale, float octaveAttenuation, float jitter, float time)
 {
 	float freq = scale;
 	float weight = 1.0f;
 	float sum = 0;
 	for (int i = 0; i < octaveNumber; i++)
 	{
-		float2 F = inoise(p * freq + _Time.y * speed, jitter) * weight;
+		float2 F = inoise(p * freq + time * speed, jitter) * weight;
 
 		sum += sqrt(F[1]) - sqrt(F[0]);
 

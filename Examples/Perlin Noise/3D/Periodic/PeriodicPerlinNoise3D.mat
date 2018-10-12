@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PeriodicPerlinNoise3D
-  m_Shader: {fileID: 4800000, guid: 9ca9cb3482fb1cf4fba3af94c49a6cc1, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7fa8f2ff01cec3c448b6e486f6f716ac, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -68,6 +68,8 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Octave: 6
+    - _OctaveScale: 2
     - _Offset: 0.32
     - _Parallax: 0.02
     - _Period: 5
