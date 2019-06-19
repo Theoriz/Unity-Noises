@@ -19,7 +19,7 @@ You can use these textures as maps for your material, or write your own material
 
 Unity shader time is unaffected by the game time scale, therefore noises based on shader time will not be synchronized with the rest of the game which can be problematic (when recording for example).
 
-To use the game time instead of shader time in the noises shaders, add the ShaderTimeController.cs script to your scene and set the _IsTimeControlled parameter of the shaders to 1.
+To use the game time instead of shader time in the noises shaders, write this line in the Update method of a script : "Shader.SetGlobalFloat("_ControlledTime", Time.time);" and set the _IsTimeControlled parameter of the shaders to 1.
 
 ## Acknowledgments
 
