@@ -6,7 +6,7 @@ CustomRenderTexture:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PerlinNoise3D
+  m_Name: SimplexNoiseGradient
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -34,7 +34,7 @@ CustomRenderTexture:
     m_WrapW: 2
   m_Dimension: 2
   m_VolumeDepth: 1
-  m_Material: {fileID: 2100000, guid: 3b8d1760da1483a43807cbd9451108bd, type: 2}
+  m_Material: {fileID: 2100000, guid: 2e7d2f6bb8666334394d6ec921b37817, type: 2}
   m_InitSource: 0
   m_InitMaterial: {fileID: 0}
   m_InitColor: {r: 1, g: 1, b: 1, a: 1}

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SimplexNoise3D
-  m_Shader: {fileID: 4800000, guid: 22c2ebcd30ed95d40bb1c032ef2305f2, type: 3}
+  m_Name: DistortionFlowMat
+  m_Shader: {fileID: 4800000, guid: 0120fe65584f409498e5ec43ccea1b7b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -39,8 +39,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FlowMap:
+        m_Texture: {fileID: 8600000, guid: b2d8b2b32645cbf4181110c9a10e4dd1, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8600000, guid: aff79f38e0671d94ba375e84a58dd9e5, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -56,14 +60,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Attenuation: 0.5
     - _BumpScale: 1
-    - _ControlledTime: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Fractal: 6
-    - _FractalScale: 2.2
+    - _FlowOffset: 0
+    - _FlowStrength: 0.93
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -71,17 +73,15 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Octave: 6
-    - _OctaveScale: 2
-    - _Offset: 0
     - _Parallax: 0.02
-    - _Scale: 10
-    - _SimplexDerivative: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.08
+    - _Speed: 0
     - _SrcBlend: 1
+    - _Tiling: 1
+    - _UJump: 0.25
     - _UVSec: 0
+    - _VJump: 0.25
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SimplexNoise3D
-  m_Shader: {fileID: 4800000, guid: 22c2ebcd30ed95d40bb1c032ef2305f2, type: 3}
+  m_Name: SimplexNoiseGradient
+  m_Shader: {fileID: 4800000, guid: 8d08c77e68d611646a6f27ccd49e1274, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -67,19 +67,20 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Intensity: 0.199
     - _IsTimeControlled: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Octave: 6
+    - _Octave: 1
     - _OctaveScale: 2
-    - _Offset: 0
+    - _Offset: 3
     - _Parallax: 0.02
-    - _Scale: 10
+    - _Scale: 2.29
     - _SimplexDerivative: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.08
+    - _Speed: 0.03
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
