@@ -4,7 +4,7 @@ Shader "Unity-Noises/VoronoiNoise3D/Update"
 	{
 		_Scale("Scale", Range(0,10)) = 3
 		_Offset("Offset", Range(-3, 3)) = -0.5
-		_Speed("Speed", Range(-5,5)) = 0.1
+		_Speed("Speed",Vector) = (0,1,0,0)
 		_Octave("OctaveNumber", Range(1,6)) = 1
 		_OctaveScale("OctaveScaleIncrease", Range(0,10)) = 2
 		_Attenuation("OctaveAttenuation", Range(0,1)) = 0.5
@@ -36,7 +36,7 @@ Shader "Unity-Noises/VoronoiNoise3D/Update"
 
 		float time = _IsTimeControlled == 1.0f ? _ControlledTime : _Time.y;
 
-		output += VoronoiNoise_Octaves(float3(uv,0), _Scale, float3(0, 0, _Speed), int(_Octave), _OctaveScale, _Attenuation, _Jitter, time);
+		output += VoronoiNoise_Octaves(float3(uv,0), _Scale, _Speed.xyz, int(_Octave), _OctaveScale, _Attenuation, _Jitter, time);
 
 		return output;
 

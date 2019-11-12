@@ -6,7 +6,7 @@ Shader "Unity-Noises/SimplexNoise3D/Update"
 		_Color("Color", Color) = (1,1,1,1)
 		_Scale("Scale", Range(0,10)) = 5
 		_Offset("Offset", Range(-3, 3)) = 0
-		_Speed("Speed", Range(-5,5)) = 0.3
+		_Speed("Speed",Vector) = (0,1,0,0)
 		_Octave("OctaveNumber", Range(1,6)) = 6
 		_OctaveScale("OctaveScaleIncrease", Range(0,10)) = 2
 		_Attenuation("OctaveAttenuation", Range(0,1)) = 0.5
@@ -37,7 +37,7 @@ Shader "Unity-Noises/SimplexNoise3D/Update"
 
 		float time = _IsTimeControlled == 1.0f ? _ControlledTime : _Time.y;
 
-		output += SimplexNoise_Octaves(float3(uv, 0), _Scale, float3(0.0f, 0.0f, _Speed), uint(_Octave), _OctaveScale, _Attenuation, time);
+		output += SimplexNoise_Octaves(float3(uv, 0), _Scale, _Speed.xyz, uint(_Octave), _OctaveScale, _Attenuation, time);
 
 		return output * _Color * _Intensity;
 

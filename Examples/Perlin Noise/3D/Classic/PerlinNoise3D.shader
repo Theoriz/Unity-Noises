@@ -2,9 +2,9 @@ Shader "Unity-Noises/PerlinNoise3D/Update"
 {
 	Properties
 	{
-		_Scale("Scale", Range(0,10)) = 5
+		_Scale("Scale", Range(0,100)) = 5
 		_Offset("Offset", Range(-3, 3)) = 0.5
-		_Speed("Speed", Range(-5,5)) = 0.5
+		_Speed("Speed",Vector) = (0,1,0,0)
 		_Octave("OctaveNumber", Range(1,6)) = 6
 		_OctaveScale("OctaveScaleIncrease", Range(0,10)) = 2
 		_Attenuation("OctaveAttenuation", Range(0,1)) = 0.5
@@ -21,7 +21,7 @@ Shader "Unity-Noises/PerlinNoise3D/Update"
 	float _Scale;
 	float _Offset;
 	float _Attenuation;
-	float _Speed;
+	float3 _Speed;
 	float _IsTimeControlled;
 	float _ControlledTime;
 
@@ -33,7 +33,7 @@ Shader "Unity-Noises/PerlinNoise3D/Update"
         
 		float time = _IsTimeControlled == 1.0f ? _ControlledTime : _Time.y;
 
-		output += PerlinNoise_Octaves(float3(uv, 0), _Scale, float3(0.0f, 0.0f, _Speed), uint(_Octave), _OctaveScale, _Attenuation, time);
+		output += PerlinNoise_Octaves(float3(uv, 0), _Scale, _Speed.xyz, uint(_Octave), _OctaveScale, _Attenuation, time);
 
 		return output;
 
