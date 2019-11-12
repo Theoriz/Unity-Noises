@@ -22,7 +22,7 @@ Shader "Unity-Noises/VoronoiNoiseDiff3D/Update"
 	float _Scale;
 	float _Offset;
 	float _Attenuation;
-	float _Speed;
+	float3 _Speed;
 	float _Jitter;
 	float _IsTimeControlled;
 	float _ControlledTime;

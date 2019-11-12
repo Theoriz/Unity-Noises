@@ -24,7 +24,7 @@ Shader "Unity-Noises/SimplexNoise3D/Update"
 	float _Scale;
 	float _Offset;
 	float _Attenuation;
-	float _Speed;
+	float3 _Speed;
 	float _IsTimeControlled;
 	float _ControlledTime;
 	float _Intensity;
