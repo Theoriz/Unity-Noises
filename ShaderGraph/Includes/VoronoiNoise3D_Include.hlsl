@@ -82,4 +82,20 @@ void VoronoiNoiseOctaves_float(float3 inCoord, float scale, int octaveNumber, fl
 	}
 }
 
+void VoronoiNoiseDiffOctaves_float(float3 inCoord, float scale, int octaveNumber, float octaveScale, float octaveAttenuation, float jitter, out float Out)
+{
+	float freq = scale;
+	float weight = 1.0f;
+	Out = 0;
+	for (int i = 0; i < octaveNumber; i++)
+	{
+		float2 F = inoise(inCoord * freq, jitter) * weight;
+
+		Out += sqrt(F[1]) - sqrt(F[0]);
+
+		freq *= octaveScale;
+		weight *= 1.0f - octaveAttenuation;
+	}
+}
+
 #endif
