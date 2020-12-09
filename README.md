@@ -15,6 +15,10 @@ Examples of wrapping of these functions for CustomRenderTextures are in the /Exa
 
 You can use these textures as maps for your material, or write your own material shader using the noise functions directly (recommended for better performance).
 
+### Shader Graph
+
+Subgraphs are included in the ShaderGraph directory to use the noises as nodes in ShaderGraph directly.
+
 ### Time control
 
 Unity shader time is unaffected by the game time scale, therefore noises based on shader time will not be synchronized with the rest of the game which can be problematic (when recording for example).
