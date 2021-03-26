@@ -1,3 +1,5 @@
+/* Taken from https://catlikecoding.com/unity/tutorials/flow/texture-distortion/ */
+
 Shader "Unity-Noises/DistortionFlow/Update"
 {
 	Properties
@@ -18,8 +20,6 @@ Shader "Unity-Noises/DistortionFlow/Update"
 
 #include "UnityCustomRenderTexture.cginc"
 #include "../../Includes/Flow.cginc"
-
-			/* Taken from https://catlikecoding.com/unity/tutorials/flow/texture-distortion/ */
 
 			sampler2D _MainTex, _FlowMap;
 		float _UJump, _VJump, _Tiling, _Speed, _FlowStrength, _FlowOffset;
