@@ -11,6 +11,7 @@ Shader "Unity-Noises/SimplexNoise3D/Update"
 		_OctaveScale("OctaveScaleIncrease", Range(0,10)) = 2
 		_Attenuation("OctaveAttenuation", Range(0,1)) = 0.5
 		_IsTimeControlled("Is time controlled ? (1=yes)", Range(0,1)) = 0
+		_ControlledTime("Controlled Time", Float) = 0
 	}
 
 		CGINCLUDE
@@ -32,6 +33,9 @@ Shader "Unity-Noises/SimplexNoise3D/Update"
 	half4 frag(v2f_customrendertexture i) : SV_Target
 	{
 		float2 uv = i.globalTexcoord;
+
+		//Scale uv to match texture ratio
+		uv.x *= (float)_CustomRenderTextureWidth / _CustomRenderTextureHeight;
 
 		float4 output = _Offset;
 

@@ -5,9 +5,10 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: VoronoiNoiseDiff3D
-  m_Shader: {fileID: 4800000, guid: 761ea6a9c3717e94b8e5e54b53671efe, type: 3}
+  m_Shader: {fileID: 4800000, guid: 70f1db68447719b4e9af143776d563da, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -63,15 +64,16 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _IsTimeControlled: 0.078
     - _Jitter: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Octave: 2.45
+    - _Octave: 2.39
     - _OctaveScale: 2
     - _Offset: 0
     - _Parallax: 0.02
-    - _Scale: 10
+    - _Scale: 5.88
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 0.3
@@ -81,3 +83,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Speed: {r: 0, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []

@@ -19,6 +19,7 @@ Shader "Unity-Noises/LavaNoise/Update"
 		_DisplacementStrength("Displacement Strength", Float) = 0.5
 		_AdvectionFactor("Advection Factor", Range(0,1)) = .77
 		_IsTimeControlled("Is time controlled ? (1=yes)", Range(0,1)) = 0
+		_ControlledTime("Controlled Time", Float) = 0
 	}
 
 		CGINCLUDE

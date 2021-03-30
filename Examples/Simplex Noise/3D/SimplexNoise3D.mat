@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SimplexNoise3D
-  m_Shader: {fileID: 4800000, guid: 22c2ebcd30ed95d40bb1c032ef2305f2, type: 3}
+  m_Shader: {fileID: 4800000, guid: d1a1eb1175b84c04a883fa9f852ddd0b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -58,7 +58,7 @@ Material:
     m_Floats:
     - _Attenuation: 0.5
     - _BumpScale: 1
-    - _ControlledTime: 0
+    - _ControlledTime: 0.36
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -67,6 +67,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Intensity: 1
     - _IsTimeControlled: 1
     - _Metallic: 0
     - _Mode: 0
@@ -75,7 +76,7 @@ Material:
     - _OctaveScale: 2
     - _Offset: 0
     - _Parallax: 0.02
-    - _Scale: 10
+    - _Scale: 0.71
     - _SimplexDerivative: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -86,3 +87,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Speed: {r: 0, g: 0, b: 1, a: 0}
+  m_BuildTextureStacks: []
