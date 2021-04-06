@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SimplexNoiseGradient
-  m_Shader: {fileID: 4800000, guid: 8d08c77e68d611646a6f27ccd49e1274, type: 3}
+  m_Name: LavaNoise
+  m_Shader: {fileID: 4800000, guid: 715fd72d65b3224428452d18f1b4e189, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -39,12 +39,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FlowMap:
+        m_Texture: {fileID: 8600000, guid: b2d8b2b32645cbf4181110c9a10e4dd1, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8600000, guid: aff79f38e0671d94ba375e84a58dd9e5, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: 4bfc96e2b6a9de84686ba4fb35eee39d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -56,36 +64,39 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Attenuation: 0.5
+    - _AdvectionFactor: 0.77
     - _BumpScale: 1
-    - _ControlledTime: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DisplacementFieldRotationSpeed: 6
+    - _DisplacementFieldScale: 1
+    - _DisplacementStrength: 0.5
     - _DstBlend: 0
-    - _Fractal: 6
-    - _FractalScale: 2.2
+    - _FlowOffset: 0
+    - _FlowStrength: 0.93
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Intensity: 1
-    - _IsTimeControlled: 1
+    - _IsTimeControlled: 0
     - _Metallic: 0
     - _Mode: 0
+    - _NoiseTexScale: 0.01
     - _OcclusionStrength: 1
-    - _Octave: 1
-    - _OctaveScale: 2
-    - _Offset: 0.01
+    - _Octaves: 6
     - _Parallax: 0.02
-    - _Scale: 10
-    - _SimplexDerivative: 0
+    - _PrimaryFlowSpeed: 0.6
+    - _Scale: 3
+    - _SecondaryFlowSpeed: 1.9
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.03
+    - _Speed: 0.1
     - _SrcBlend: 1
+    - _Tiling: 1
+    - _UJump: 0.25
     - _UVSec: 0
+    - _VJump: 0.25
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Speed: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
